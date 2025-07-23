@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Weather Accurate – Professional Weather Forecast</title>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Weather animations canvas -->
+  <canvas id="weatherAnimationCanvas" class="weather-canvas"></canvas>
+  
+  <!-- Transparent radial halo behind content for extra depth -->
+  <div class="halo" aria-hidden="true"></div>
+
+  <!-- On-boarding Overlay -->
+  <div id="landingOverlay" class="overlay flex items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+    <div class="overlay-card glass card rise-in" tabindex="-1">
+      <h2 id="overlayTitle" class="mb-8">Enable Location Services</h2>
+      <p class="mb-16">Allow The Weather Accurate to use your location for an instant local forecast, or search manually.</p>
+      <div class="flex gap-8 justify-center">
+        <button id="overlayEnableBtn" class="btn btn--primary">Enable&nbsp;Location</button>
+        <button id="overlaySkipBtn" class="btn btn--outline">Skip</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="app-header glass card slide-down" aria-label="Main header">
+    <div class="container">
+      <div class="header-top flex justify-between items-center gap-16 py-8">
+        <h1 class="app-title">The Weather Accurate</h1>
+        <button id="unitToggle" class="btn btn--secondary" aria-label="Toggle units">°C / °F</button>
+      </div>
+      <div class="header-search py-8">
+        <div class="search-wrapper" aria-label="Search city">
+          <input id="citySearch" type="text" class="form-control search-input" placeholder="Search city…" autocomplete="off" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" />
+          <div id="searchResults" class="search-results hidden" role="listbox"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Weather Dashboard -->
+  <main id="dashboard" class="dashboard hidden container">
+    <!-- Current Weather Card -->
+    <section class="current card glass fade-in" aria-labelledby="currentLocation">
+      <div class="current-header flex justify-between items-start mb-16">
+        <div>
+          <h2 id="currentLocation">—</h2>
+          <p id="currentTime" class="text-secondary"></p>
+        </div>
+        <div class="current-emoji" id="currentIcon" aria-hidden="true">☀️</div>
+      </div>
+      <div class="text-center mb-24">
+        <span id="currentTemp" class="current-temp">—</span><span class="temp-unit">°C</span>
+        <p id="currentDescription" class="capitalize mt-8">—</p>
+      </div>
+      <div class="details-grid">
+        <div class="detail"><span>Feels</span><strong id="feelsLike">—°</strong></div>
+        <div class="detail"><span>Humidity</span><strong id="humidity">—%</strong></div>
+        <div class="detail"><span>Wind</span><strong id="windSpeed">— km/h</strong></div>
+        <div class="detail"><span>Direction</span><strong id="windDirection">—°</strong></div>
+      </div>
+    </section>
+
+    <!-- Hourly Forecast Carousel -->
+    <section aria-labelledby="hourlyTitle" class="hourly-section fade-in">
+      <h3 id="hourlyTitle" class="section-header mb-16">Next 24 Hours</h3>
+      <div id="hourlyForecast" class="hourly-scroll"></div>
+    </section>
+
+    <!-- 24-hour Temperature Trend Chart -->
+    <section class="chart-section fade-in" aria-label="24 hour temperature chart">
+      <h3 class="section-header mb-16">Temperature Trend</h3>
+      <canvas id="tempChart" height="180"></canvas>
+    </section>
+
+    <!-- 7-Day Forecast Grid -->
+    <section aria-labelledby="dailyTitle" class="daily-section fade-in">
+      <h3 id="dailyTitle" class="section-header mb-16">7-Day Forecast</h3>
+      <div id="dailyForecast" class="daily-grid"></div>
+    </section>
+  </main>
+
+  <!-- Loading & Error States -->
+  <div id="loadingState" class="state hidden flex flex-col items-center gap-8" role="status">
+    <div class="spinner" aria-hidden="true"></div>
+    <p>Loading weather data…</p>
+  </div>
+  <div id="errorState" class="state hidden flex flex-col items-center gap-8" role="alert">
+    <p id="errorMessage">Something went wrong.</p>
+    <button id="retryBtn" class="btn btn--primary">Try again</button>
+  </div>
+
+  <footer class="app-footer mt-24 text-center py-8">
+    <p>Data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
