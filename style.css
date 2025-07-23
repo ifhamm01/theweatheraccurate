@@ -738,28 +738,29 @@ select.form-control {
 }
 
 /* END PERPLEXITY DESIGN SYSTEM */
-/* The Weather Accurate - Professional Weather App Design System */
-
-/* Professional Typography - Weather App Fonts */
+/* Professional Weather App Typography */
 @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+
+/* iOS Glass Weather App - Premium Design System */
 
 /* Force dark theme */
 html {
   color-scheme: dark;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  font-family: 'SF Pro Display', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
 }
 
 body {
   background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
   min-height: 100vh;
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
+  font-family: 'SF Pro Display', 'Helvetica Neue', 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
   position: relative;
-  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }
 
 /* Weather Animation Canvas */
-.weather-canvas {
+#weatherCanvas {
   position: fixed;
   top: 0;
   left: 0;
@@ -787,7 +788,20 @@ body.weather-snow {
 }
 
 body.weather-thunderstorm {
-  background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #2d3436 100%);
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #2c3e50 50%, #34495e 75%, #2c3e50 100%);
+}
+
+/* Lightning flash overlay */
+.lightning-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
 }
 
 /* Animated halo background effect */
@@ -847,17 +861,13 @@ body.weather-thunderstorm {
     0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* Enhanced Header with Proper Separation */
+/* Enhanced Header with Professional Typography */
 .app-header {
   position: sticky;
   top: 0;
   z-index: 100;
   margin: var(--space-16) var(--space-16) 0;
   border-radius: 16px;
-}
-
-.app-header .container {
-  padding: 0;
 }
 
 .header-top {
@@ -870,26 +880,23 @@ body.weather-thunderstorm {
 }
 
 .app-title {
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 700;
-  letter-spacing: -0.02em;
   background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 0;
+  letter-spacing: -0.02em;
 }
 
-/* Section Headers with Professional Typography */
-.section-header {
-  font-size: 20px;
-  font-weight: 600;
-  color: white;
+.section-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
   letter-spacing: -0.01em;
-  margin: 0 0 var(--space-16) var(--space-4);
 }
 
-/* FIXED Search Interface with High Visibility */
+/* CRITICAL FIX: Search Interface with Proper Dropdown */
 .search-wrapper {
   position: relative;
   width: 100%;
@@ -921,7 +928,7 @@ body.weather-thunderstorm {
   font-weight: 400;
 }
 
-/* CRITICAL FIX: High Visibility Search Results */
+/* CRITICAL FIX: Search Results Dropdown - High Z-Index and Proper Styling */
 .search-results {
   position: absolute;
   top: calc(100% + 8px);
@@ -929,45 +936,50 @@ body.weather-thunderstorm {
   right: 0;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  max-height: 240px;
+  max-height: 300px;
   overflow-y: auto;
-  z-index: 1000;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  display: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.search-results.visible {
+  display: block;
   animation: slideDown 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.search-result {
-  padding: var(--space-16);
-  color: #2c3e50;
+.search-result-item {
+  padding: 12px 16px;
+  color: #333;
   cursor: pointer;
-  transition: all 0.2s ease;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  font-weight: 500;
-  font-size: 15px;
+  transition: background-color 0.2s ease;
+  font-size: 14px;
+  font-weight: 400;
 }
 
-.search-result:hover {
-  background: rgba(31, 184, 205, 0.15);
-  color: #1a252f;
-  transform: translateX(4px);
+.search-result-item:hover {
+  background-color: rgba(59, 130, 246, 0.1);
 }
 
-.search-result:last-child {
+.search-result-item:last-child {
   border-bottom: none;
 }
 
-.result-name {
-  font-weight: 600;
-  color: #2c3e50;
+.search-loading {
+  padding: 16px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
 }
 
-.result-country {
-  color: #636e72;
-  font-weight: 400;
+.search-no-results {
+  padding: 16px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
 }
 
 /* Current Weather Card */
@@ -978,7 +990,7 @@ body.weather-thunderstorm {
 }
 
 .current-header h2 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 600;
   color: white;
   margin-bottom: var(--space-4);
@@ -1001,10 +1013,11 @@ body.weather-thunderstorm {
   font-weight: 300;
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
 }
 
 .temp-unit {
-  font-size: 24px;
+  font-size: 20px;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 300;
 }
@@ -1012,8 +1025,8 @@ body.weather-thunderstorm {
 .capitalize {
   text-transform: capitalize;
   color: rgba(255, 255, 255, 0.9);
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .details-grid {
@@ -1034,14 +1047,14 @@ body.weather-thunderstorm {
 }
 
 .detail span {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-4);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .detail strong {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   font-weight: 600;
 }
@@ -1079,7 +1092,7 @@ body.weather-thunderstorm {
 }
 
 .hourly-time {
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: var(--space-8);
   font-weight: 500;
@@ -1092,7 +1105,7 @@ body.weather-thunderstorm {
 }
 
 .hourly-temp {
-  font-size: 15px;
+  font-size: 14px;
   color: white;
   font-weight: 600;
 }
@@ -1131,7 +1144,7 @@ body.weather-thunderstorm {
 }
 
 .daily-day {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   font-weight: 500;
 }
@@ -1154,7 +1167,7 @@ body.weather-thunderstorm {
   color: rgba(31, 184, 205, 0.8);
   text-align: right;
   margin-right: var(--space-12);
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .daily-temps {
@@ -1166,20 +1179,20 @@ body.weather-thunderstorm {
 .daily-high {
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .daily-low {
   color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* Buttons */
 .btn {
   border-radius: 12px;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 500;
+  font-size: 14px;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
@@ -1294,13 +1307,14 @@ body.weather-thunderstorm {
 .overlay-card p {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
+  font-size: 14px;
   font-weight: 400;
 }
 
 /* Footer */
 .app-footer {
   color: rgba(255, 255, 255, 0.6);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
 }
 
@@ -1383,17 +1397,11 @@ body.weather-thunderstorm {
   }
   
   .app-title {
-    font-size: 24px;
-  }
-  
-  .header-top {
-    flex-direction: column;
-    gap: var(--space-12);
-    align-items: flex-start;
+    font-size: 30px;
   }
   
   .current-temp {
-    font-size: 56px;
+    font-size: 48px;
   }
   
   .details-grid {
@@ -1440,10 +1448,5 @@ body.weather-thunderstorm {
   
   .text-secondary {
     color: rgba(255, 255, 255, 0.9);
-  }
-  
-  .search-results {
-    background: rgba(255, 255, 255, 1);
-    border: 2px solid rgba(0, 0, 0, 0.3);
   }
 }
