@@ -33,20 +33,6 @@ This project demonstrates best practices in web development, including responsiv
 - **Animations**: CSS keyframe animations and JavaScript for dynamic weather effects (e.g., particles for snow/rain, lens glare for sun).
 - **Other**: Local Storage for user preferences, Canvas for advanced particle systems.
 
-## Installation
-
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/the-weather-accurate.git
-   ```
-2. Navigate to the project directory:
-   ```
-   cd the-weather-accurate
-   ```
-3. Open `index.html` in your preferred web browser. No server or dependencies required, as it's a static app.
-
-   *Note*: For development, you can use a local server like Live Server in VS Code for hot reloading.
-
 ## Usage
 
 1. **Launch the App**: Open `index.html` in a browser.
@@ -65,21 +51,6 @@ The app is optimized for Chrome, Firefox, Safari, and Edge. Test on different de
 - **Thunderstorm**: Heavy rain overlay.
 - **Snow**: Falling snowflakes.
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature/your-feature`.
-3. Commit your changes: `git commit -m 'Add some feature'`.
-4. Push to the branch: `git push origin feature/your-feature`.
-5. Open a Pull Request.
-
-For bug reports or feature requests, open an issue with detailed information.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
