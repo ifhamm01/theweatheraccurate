@@ -1,6 +1,4 @@
-# The Weather Accurate
 
-![The Weather Accurate Logo for logo; replace with actual image if available -->
 
 ## Overview
 
