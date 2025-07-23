@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Weather animations canvas -->
-  <canvas id="weatherAnimationCanvas" class="weather-canvas"></canvas>
+  <!-- Weather Animation Canvas -->
+  <canvas id="weatherCanvas" aria-hidden="true"></canvas>
   
   <!-- Transparent radial halo behind content for extra depth -->
   <div class="halo" aria-hidden="true"></div>
@@ -30,14 +30,14 @@
   <!-- Header / Navigation -->
   <header class="app-header glass card slide-down" aria-label="Main header">
     <div class="container">
-      <div class="header-top flex justify-between items-center gap-16 py-8">
+      <div class="header-top flex justify-between items-center py-8">
         <h1 class="app-title">The Weather Accurate</h1>
         <button id="unitToggle" class="btn btn--secondary" aria-label="Toggle units">°C / °F</button>
       </div>
-      <div class="header-search py-8">
+      <div class="header-search">
         <div class="search-wrapper" aria-label="Search city">
-          <input id="citySearch" type="text" class="form-control search-input" placeholder="Search city…" autocomplete="off" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" />
-          <div id="searchResults" class="search-results hidden" role="listbox"></div>
+          <input id="citySearch" type="text" class="form-control search-input" placeholder="Search for a city..." autocomplete="off" aria-autocomplete="list" aria-haspopup="listbox" aria-expanded="false" />
+          <div id="searchResults" class="search-results" role="listbox"></div>
         </div>
       </div>
     </div>
@@ -68,19 +68,18 @@
 
     <!-- Hourly Forecast Carousel -->
     <section aria-labelledby="hourlyTitle" class="hourly-section fade-in">
-      <h3 id="hourlyTitle" class="section-header mb-16">Next 24 Hours</h3>
+      <h3 id="hourlyTitle" class="section-title mb-16">Next 24 hours</h3>
       <div id="hourlyForecast" class="hourly-scroll"></div>
     </section>
 
     <!-- 24-hour Temperature Trend Chart -->
     <section class="chart-section fade-in" aria-label="24 hour temperature chart">
-      <h3 class="section-header mb-16">Temperature Trend</h3>
       <canvas id="tempChart" height="180"></canvas>
     </section>
 
     <!-- 7-Day Forecast Grid -->
     <section aria-labelledby="dailyTitle" class="daily-section fade-in">
-      <h3 id="dailyTitle" class="section-header mb-16">7-Day Forecast</h3>
+      <h3 id="dailyTitle" class="section-title mb-16">7-Day Forecast</h3>
       <div id="dailyForecast" class="daily-grid"></div>
     </section>
   </main>
