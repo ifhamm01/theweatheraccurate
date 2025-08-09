@@ -58,4 +58,3 @@ The app is optimized for Chrome, Firefox, Safari, and Edge. Test on different de
 - Inspiration from modern weather apps like Apple's iOS Weather.
 - CSS animation resources, including Foolish Developer's rain effects tutorial.
 
-For questions or support, contact the maintainer at [your.email@example.com].
